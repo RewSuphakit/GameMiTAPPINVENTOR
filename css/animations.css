@@ -1,0 +1,202 @@
+/**
+ * ==============================================================================
+ * ANIMATIONS & MICRO-INTERACTIONS (css/animations.css)
+ * ==============================================================================
+ */
+
+/* 1. สั่นเตือนข้อผิดพลาดหรือบล็อกลวง (Decoy Shake) */
+@keyframes shake-penalty {
+  0%, 100% { transform: translateX(0); }
+  15%, 45%, 75% { transform: translateX(-8px) rotate(-1deg); }
+  30%, 60%, 90% { transform: translateX(8px) rotate(1deg); }
+}
+
+.shake-penalty {
+  animation: shake-penalty 0.55s ease-in-out !important;
+  border-color: var(--color-danger) !important;
+}
+
+/* 2. กระพริบเตือนบล็อกที่มี Bug */
+@keyframes pulse-buggy {
+  0%, 100% { outline-color: #ef4444; }
+  50% { outline-color: rgba(239, 68, 68, 0.2); }
+}
+
+/* 3. วงแหวนสะท้อนจุดด่านปัจจุบันใน World Map */
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 rgba(124, 58, 237, 0.6); }
+  70% { box-shadow: 0 0 0 14px rgba(124, 58, 237, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(124, 58, 237, 0); }
+}
+
+/* 4. ดาวกระเด้งเมื่อผ่านด่าน (Star Bounce) */
+@keyframes star-bounce {
+  0% { transform: scale(0) rotate(-45deg); opacity: 0; }
+  70% { transform: scale(1.25) rotate(10deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+.star-pop-1 { animation: star-bounce 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards 0.2s; }
+.star-pop-2 { animation: star-bounce 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards 0.45s; }
+.star-pop-3 { animation: star-bounce 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards 0.7s; }
+
+/* 5. เอฟเฟกต์ Ripple เมื่อต่อ Snap สำเร็จ */
+@keyframes snap-ripple {
+  0% { transform: scale(0.9); opacity: 1; }
+  100% { transform: scale(1.4); opacity: 0; }
+}
+
+.snap-ripple-effect {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  border: 3px solid var(--color-success);
+  border-radius: inherit;
+  pointer-events: none;
+  animation: snap-ripple 0.4s ease-out forwards;
+}
+
+/* 6. Canvas Confetti Particles (Fallback Native CSS) */
+#canvas-confetti-fallback {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 99999;
+}
+
+/* 7. Floating Sparkles เมื่อ Snap สำเร็จ ✨ */
+@keyframes float-sparkle {
+  0% { transform: translate(0, 0) scale(0.6) rotate(0deg); opacity: 1; }
+  100% { transform: translate(var(--dx, 20px), var(--dy, -35px)) scale(1.3) rotate(45deg); opacity: 0; }
+}
+
+.floating-sparkle {
+  position: fixed;
+  pointer-events: none;
+  font-size: 1.2rem;
+  z-index: 99999;
+  animation: float-sparkle 0.65s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+/* 8. Floating Score Popup (+125 PTS) */
+@keyframes float-score-up {
+  0% { transform: translate(-50%, 0) scale(0.7); opacity: 0; }
+  25% { transform: translate(-50%, -15px) scale(1.15); opacity: 1; }
+  75% { transform: translate(-50%, -35px) scale(1); opacity: 1; }
+  100% { transform: translate(-50%, -55px) scale(0.9); opacity: 0; }
+}
+
+.floating-score-popup {
+  position: fixed;
+  pointer-events: none;
+  font-size: 1.25rem;
+  font-weight: 900;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  z-index: 99999;
+  animation: float-score-up 0.95s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* 9. Socket Color Glows (ชี้แนะสีบล็อกที่ถูกต้องเพื่อความง่ายและสนุก) */
+@keyframes glow-orange {
+  0%, 100% { border-color: rgba(249, 115, 22, 0.6); box-shadow: 0 0 8px rgba(249, 115, 22, 0.35); }
+  50% { border-color: #f97316; box-shadow: 0 0 16px rgba(249, 115, 22, 0.7); }
+}
+
+@keyframes glow-blue {
+  0%, 100% { border-color: rgba(59, 130, 246, 0.6); box-shadow: 0 0 8px rgba(59, 130, 246, 0.35); }
+  50% { border-color: #3b82f6; box-shadow: 0 0 16px rgba(59, 130, 246, 0.7); }
+}
+
+@keyframes glow-green {
+  0%, 100% { border-color: rgba(16, 185, 129, 0.6); box-shadow: 0 0 8px rgba(16, 185, 129, 0.35); }
+  50% { border-color: #10b981; box-shadow: 0 0 16px rgba(16, 185, 129, 0.7); }
+}
+
+.socket-glow-var {
+  animation: glow-orange 2s infinite ease-in-out !important;
+  background: rgba(249, 115, 22, 0.15) !important;
+}
+
+.socket-glow-math {
+  animation: glow-blue 2s infinite ease-in-out !important;
+  background: rgba(59, 130, 246, 0.15) !important;
+}
+
+.socket-glow-logic {
+  animation: glow-green 2s infinite ease-in-out !important;
+  background: rgba(16, 185, 129, 0.15) !important;
+}
+
+@keyframes glow-pink {
+  0%, 100% { border-color: rgba(219, 39, 119, 0.6); box-shadow: 0 0 8px rgba(219, 39, 119, 0.35); }
+  50% { border-color: #ec4899; box-shadow: 0 0 16px rgba(219, 39, 119, 0.7); }
+}
+
+@keyframes glow-purple {
+  0%, 100% { border-color: rgba(147, 51, 234, 0.6); box-shadow: 0 0 8px rgba(147, 51, 234, 0.35); }
+  50% { border-color: #a855f7; box-shadow: 0 0 16px rgba(147, 51, 234, 0.7); }
+}
+
+.socket-glow-text {
+  animation: glow-pink 2s infinite ease-in-out !important;
+  background: rgba(219, 39, 119, 0.15) !important;
+}
+
+.socket-glow-call {
+  animation: glow-purple 2s infinite ease-in-out !important;
+  background: rgba(147, 51, 234, 0.15) !important;
+}
+
+.socket-glow-var.filled,
+.socket-glow-math.filled,
+.socket-glow-logic.filled,
+.socket-glow-text.filled,
+.socket-glow-call.filled {
+  animation: none !important;
+  background: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.vic-star {
+  display: inline-block;
+  font-size: 2.2rem;
+  margin: 0 4px;
+  filter: grayscale(1) opacity(0.3);
+  transform: scale(0.8);
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.3s ease;
+}
+
+.vic-star.earned {
+  filter: grayscale(0) opacity(1);
+  transform: scale(1.25);
+  animation: star-bounce 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* 10. Mobile Bottom Sheet Slide Up Animation */
+@keyframes sheet-slide-up {
+  0% { transform: translateY(100%); opacity: 0.5; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes pulse-gentle {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.tap-active {
+  transform: scale(0.95) !important;
+  transition: transform 0.1s ease !important;
+}
+
+/* รองรับผู้ใช้ที่เปิด prefer-reduced-motion (ปิดการเคลื่อนไหวฉูดฉาด) */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "App Inventor: The Code Breaker Mission",
+  "short_name": "CodeBreaker",
+  "description": "เว็บแอปฝึกทักษะการแก้ปัญหาเชิงคำนวณด้วยบล็อกโปรแกรมมิ่ง (MIT App Inventor) สำหรับนักเรียน ปวช. 2",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0f172a",
+  "theme_color": "#7c3aed",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%237c3aed'/><text x='50' y='65' font-size='50' text-anchor='middle' fill='white'>🧩</text></svg>",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education", "games"]
+}

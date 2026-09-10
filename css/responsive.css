@@ -1,0 +1,580 @@
+/**
+ * ==============================================================================
+ * RESPONSIVE BREAKPOINTS (css/responsive.css)
+ * ==============================================================================
+ * Mobile-First Design: ปรับมุมมองอัตโนมัติตามขนาดหน้าจอ
+ * - Smartphone (320px - 767px): Mobile Split-View + แท็บสลับมุมมอง 3 แผง
+ * - Tablet (768px - 1023px): ปรับขนาดคอลัมน์และจำลองโทรศัพท์ให้กะทัดรัด
+ * - Desktop (>= 1024px): แสดง 3 คอลัมน์พร้อมกันเต็มรูปแบบ
+ */
+
+/* ==============================================================================
+ * SMARTPHONE PORTRAIT (320px - 767px)
+ * ============================================================================== */
+@media (max-width: 767px) {
+  /* 1. Header Navigation Bar (Glassmorphic & Thumb-Ready) */
+  .app-header {
+    height: 52px;
+    min-height: 52px;
+    padding: 0 12px;
+    padding-top: max(0px, var(--sat));
+    flex-shrink: 0;
+    background: var(--bg-surface-glass);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .brand-section {
+    gap: 8px;
+  }
+
+  .brand-icon {
+    width: 34px;
+    height: 34px;
+    font-size: 18px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(124, 58, 237, 0.3);
+  }
+
+  .brand-title {
+    font-size: 0.88rem;
+    font-weight: 800;
+    letter-spacing: -0.2px;
+  }
+
+  .brand-sub {
+    display: none;
+  }
+
+  .header-stats {
+    gap: 6px;
+  }
+
+  .stat-chip {
+    padding: 3px 8px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    border-radius: 9999px;
+  }
+
+  .stat-chip.timer {
+    display: none; /* Hide on small screens to save space */
+  }
+
+  .header-controls {
+    gap: 6px;
+  }
+
+  .icon-btn {
+    width: 34px;
+    height: 34px;
+    min-width: 34px;
+    font-size: 0.95rem;
+    border-radius: 50%;
+  }
+
+  .icon-btn:active {
+    transform: scale(0.92);
+  }
+
+  /* 2. Mission Strip Banner */
+  .mission-strip {
+    padding: 6px 12px;
+    flex-shrink: 0;
+    min-height: 42px;
+    background: var(--bg-surface);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .mission-info {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    min-width: 0;
+  }
+
+  .level-badge {
+    font-size: 0.72rem;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 9999px;
+    flex-shrink: 0;
+    box-shadow: 0 1px 4px rgba(124, 58, 237, 0.3);
+  }
+
+  .mission-text {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--text-main);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .mission-tools {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+
+  .hint-trigger-btn {
+    padding: 4px 10px;
+    border-radius: 9999px;
+    font-size: 0.76rem;
+    font-weight: 800;
+    background: #fef3c7;
+    color: #92400e;
+    border: 1.5px solid #fde68a;
+    box-shadow: 0 2px 6px rgba(245, 158, 11, 0.2);
+    min-height: 32px;
+  }
+
+  [data-theme="dark"] .hint-trigger-btn {
+    background: rgba(245, 158, 11, 0.18);
+    color: #fcd34d;
+    border-color: rgba(245, 158, 11, 0.35);
+  }
+
+  .hint-trigger-btn:active {
+    transform: scale(0.95);
+  }
+
+  /* 3. Mobile Segmented View Switcher (iOS Segmented Control Feel) */
+  .mobile-view-tabs {
+    display: flex;
+    padding: 6px 12px;
+    gap: 6px;
+    flex-shrink: 0;
+    min-height: 46px;
+    background: var(--bg-surface);
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .mobile-tab-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 7px 10px;
+    min-height: 38px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    border-radius: 12px;
+    background: var(--bg-app);
+    color: var(--text-muted);
+    border: 1px solid var(--border-color);
+    transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .mobile-tab-btn.active {
+    background: var(--color-primary);
+    color: white;
+    border-color: var(--color-primary);
+    box-shadow: 0 3px 12px rgba(124, 58, 237, 0.35);
+    font-weight: 800;
+    transform: scale(1.02);
+  }
+
+  .mobile-tab-btn:active {
+    transform: scale(0.96);
+  }
+
+  /* 4. Main Gameplay Workspace */
+  .main-workspace {
+    flex: 1 1 0;
+    min-height: 0;
+    height: auto;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* --------------------------------------------------------------------------
+   * VIEW 1: [ 🧩 พื้นที่ต่อ ] (Canvas): Modern Mobile Split-View
+   * -------------------------------------------------------------------------- */
+  .main-workspace[data-active-view="canvas"] {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Upper Canvas */
+  .main-workspace[data-active-view="canvas"] .canvas-panel {
+    order: 1;
+    display: flex;
+    flex: 1 1 54%;
+    min-height: 150px;
+    position: relative;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x pan-y;
+    background-color: var(--bg-canvas);
+    background-image: radial-gradient(var(--bg-grid-dot) 1.5px, transparent 1.5px);
+    background-size: 18px 18px;
+  }
+
+  /* Lower Toolbox Shelf: Modern Floating Dock Sheet */
+  .main-workspace[data-active-view="canvas"] .toolbox-panel {
+    order: 2;
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 160px;
+    height: 160px;
+    max-height: 45%;
+    width: 100%;
+    min-width: 100%;
+    border-right: none;
+    border-top: 1px solid var(--border-color);
+    border-radius: 22px 22px 0 0;
+    background: var(--bg-surface);
+    box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.1);
+    z-index: 25;
+    position: relative;
+  }
+
+  /* Grab handle indicator on top of Toolbox Shelf */
+  .main-workspace[data-active-view="canvas"] .toolbox-panel::before {
+    content: '';
+    display: block;
+    width: 36px;
+    height: 4px;
+    border-radius: 9999px;
+    background: var(--border-color);
+    margin: 6px auto 2px auto;
+    flex-shrink: 0;
+  }
+
+  .main-workspace[data-active-view="canvas"] .toolbox-panel .panel-header {
+    padding: 2px 14px 4px 14px;
+    font-size: 0.72rem;
+    font-weight: 800;
+    min-height: 24px;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--bg-surface);
+    color: var(--color-primary);
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .main-workspace[data-active-view="canvas"] .toolbox-panel .toolbox-blocks-container {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: flex-start;
+    gap: 8px 8px;
+    padding: 8px 12px 14px 12px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
+  }
+
+  .main-workspace[data-active-view="canvas"] .toolbox-panel .ai-block {
+    flex-shrink: 0;
+    font-size: 0.8rem;
+    padding: 6px 10px;
+    min-height: 38px;
+    margin-left: 2px;
+    border-radius: 8px;
+  }
+
+  .main-workspace[data-active-view="canvas"] .toolbox-panel .ai-block:active {
+    transform: scale(0.95);
+  }
+
+  .main-workspace[data-active-view="canvas"] .simulator-panel {
+    display: none !important;
+  }
+
+  /* Root block alignment on mobile canvas */
+  .canvas-viewport > [data-block-kind="root"] {
+    left: 12px !important;
+    top: 14px !important;
+    max-width: calc(100% - 24px);
+  }
+
+  /* --------------------------------------------------------------------------
+   * VIEW 2: [ 📦 กล่องบล็อก ] (Toolbox Full View)
+   * -------------------------------------------------------------------------- */
+  .main-workspace[data-active-view="toolbox"] .toolbox-panel {
+    display: flex;
+    width: 100%;
+    min-width: 100%;
+    flex: 1 1 0;
+    min-height: 0;
+    border-right: none;
+  }
+
+  .main-workspace[data-active-view="toolbox"] .canvas-panel,
+  .main-workspace[data-active-view="toolbox"] .simulator-panel {
+    display: none !important;
+  }
+
+  /* --------------------------------------------------------------------------
+   * VIEW 3: [ 📱 ตัวจำลอง ] (Simulator Full View - Modern Smartphone)
+   * -------------------------------------------------------------------------- */
+  .main-workspace[data-active-view="simulator"] .simulator-panel {
+    display: flex;
+    width: 100%;
+    min-width: 100%;
+    flex: 1 1 0;
+    min-height: 0;
+    border-left: none;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    overflow: hidden;
+  }
+
+  .main-workspace[data-active-view="simulator"] .toolbox-panel,
+  .main-workspace[data-active-view="simulator"] .canvas-panel {
+    display: none !important;
+  }
+
+  /* Modern Flagship Smartphone Bezel (iPhone 16 / Pixel 8 style) */
+  .phone-bezel {
+    width: 100%;
+    max-width: 290px;
+    max-height: calc(100% - 16px);
+    aspect-ratio: 9 / 16;
+    margin: auto;
+    background: #0f172a;
+    border-radius: 38px;
+    padding: 10px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), inset 0 0 0 2px #334155;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  .phone-notch {
+    width: 76px;
+    height: 20px;
+    background: #000000;
+    border-radius: 9999px;
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 15;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+  }
+
+  .phone-screen {
+    flex: 1;
+    background: #f8fafc;
+    border-radius: 28px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  .phone-status-bar {
+    height: 24px;
+    padding: 0 14px;
+    font-size: 0.65rem;
+    font-weight: 800;
+    color: #64748b;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 4px;
+  }
+
+  .phone-home-indicator {
+    width: 100px;
+    height: 4px;
+    border-radius: 9999px;
+    background: rgba(0, 0, 0, 0.25);
+    margin: 6px auto 4px auto;
+    flex-shrink: 0;
+  }
+
+  [data-theme="dark"] .phone-home-indicator {
+    background: rgba(255, 255, 255, 0.25);
+  }
+
+  /* 5. Sticky Bottom Action Bar (Duolingo Style 3D Feel) */
+  .action-bar {
+    height: 60px;
+    min-height: 60px;
+    max-height: 60px;
+    flex-shrink: 0;
+    padding: 0 12px;
+    padding-bottom: max(6px, var(--sab));
+    background: var(--bg-surface-glass);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    z-index: 50;
+  }
+
+  .action-bar-left {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  #mascot-bubble {
+    font-size: 0.72rem;
+    font-weight: 600;
+    background: var(--bg-app);
+    padding: 5px 10px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 170px;
+    color: var(--text-muted);
+  }
+
+  .btn-check-answer {
+    flex-shrink: 0;
+    padding: 9px 18px;
+    font-size: 0.9rem;
+    font-weight: 900;
+    min-height: 42px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #10b981, #059669);
+    box-shadow: 0 4px 0 #047857, 0 4px 14px rgba(16, 185, 129, 0.35);
+    white-space: nowrap;
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+  }
+
+  .btn-check-answer:active:not(:disabled) {
+    transform: translateY(3px);
+    box-shadow: 0 1px 0 #047857;
+  }
+
+  /* 6. Floating Trash Widget */
+  .trash-widget {
+    right: 14px;
+    bottom: 14px;
+    width: 48px;
+    height: 48px;
+    font-size: 20px;
+    border-radius: 50%;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    background: var(--bg-surface);
+    border: 2px solid var(--border-color);
+    z-index: 20;
+  }
+
+  /* 7. Native Mobile Bottom Sheet Modals */
+  .modal-overlay {
+    padding: 0;
+    align-items: flex-end; /* Slide up from bottom */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  .modal-card {
+    width: 100%;
+    max-width: 100%;
+    max-height: 88dvh;
+    border-radius: 26px 26px 0 0;
+    overflow-y: auto;
+    padding: 0 16px 20px 16px;
+    padding-bottom: max(20px, var(--sab));
+    box-shadow: 0 -12px 40px rgba(0, 0, 0, 0.3);
+    animation: sheet-slide-up 0.3s cubic-bezier(0.32, 0.72, 0, 1) forwards;
+  }
+
+  /* Grab handle indicator on top of Modal Card */
+  .modal-card::before {
+    content: '';
+    display: block;
+    width: 38px;
+    height: 5px;
+    border-radius: 9999px;
+    background: var(--border-color);
+    margin: 10px auto 12px auto;
+    flex-shrink: 0;
+  }
+
+  .modal-header {
+    padding: 8px 4px 14px 4px;
+  }
+
+  .modal-body {
+    padding: 4px;
+  }
+
+  /* 8. Top Dynamic Island Toast Notification */
+  .toast-container {
+    bottom: auto;
+    top: max(12px, var(--sat));
+    left: 50%;
+    transform: translateX(-50%);
+    right: auto;
+    width: max-content;
+    max-width: calc(100% - 24px);
+  }
+
+  .toast-item {
+    font-size: 0.8rem;
+    padding: 8px 14px;
+    border-radius: 9999px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+  }
+}
+
+/* ==============================================================================
+ * TABLET & DESKTOP (>= 768px)
+ * ============================================================================== */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .toolbox-panel {
+    width: 240px;
+    min-width: 240px;
+  }
+
+  .simulator-panel {
+    width: 300px;
+    min-width: 300px;
+  }
+
+  .phone-bezel {
+    width: 260px;
+    height: 470px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .mobile-view-tabs {
+    display: none !important;
+  }
+
+  .toolbox-panel {
+    display: flex !important;
+    width: 280px;
+    min-width: 280px;
+  }
+
+  .canvas-panel {
+    display: flex !important;
+    flex: 1;
+  }
+
+  .simulator-panel {
+    display: flex !important;
+    width: 350px;
+    min-width: 350px;
+  }
+}

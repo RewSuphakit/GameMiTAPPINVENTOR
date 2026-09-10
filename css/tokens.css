@@ -1,0 +1,135 @@
+/**
+ * ==============================================================================
+ * DESIGN TOKENS (css/tokens.css)
+ * ==============================================================================
+ * ระบบตัวแปรรวมศูนย์ตาม Playful Edu Design System
+ * รองรับทั้ง Light Theme และ Dark Theme อย่างสมบูรณ์
+ */
+
+:root {
+  /* Brand Theme Colors */
+  --color-primary: #7c3aed;
+  --color-primary-light: #9061f9;
+  --color-primary-dark: #5b21b6;
+  --color-primary-subtle: rgba(124, 58, 237, 0.12);
+
+  --color-secondary: #06b6d4;
+  --color-secondary-light: #22d3ee;
+  --color-secondary-dark: #0e7490;
+
+  --color-accent: #f59e0b;
+  --color-accent-light: #fbbf24;
+  --color-accent-dark: #d97706;
+
+  /* Semantic Feedback Colors */
+  --color-success: #10b981;
+  --color-success-bg: #ecfdf5;
+  --color-success-border: #a7f3d0;
+
+  --color-danger: #ef4444;
+  --color-danger-bg: #fef2f2;
+  --color-danger-border: #fecaca;
+
+  --color-warning: #f59e0b;
+  --color-warning-bg: #fffbeb;
+  --color-warning-border: #fde68a;
+
+  --color-info: #3b82f6;
+  --color-info-bg: #eff6ff;
+  --color-info-border: #bfdbfe;
+
+  /* Authentic MIT App Inventor Block Colors */
+  --ai-event: #cca01d;        /* Golden Yellow - when ... Click do */
+  --ai-event-dark: #a88210;
+  --ai-control: #e69138;      /* Warm Orange - if ... then ... else */
+  --ai-control-dark: #b86e20;
+  --ai-variable: #de5b26;     /* Coral Orange - set global ... to */
+  --ai-variable-dark: #b84314;
+  --ai-math: #3f51b5;         /* Royal Indigo - numbers & arithmetic */
+  --ai-math-dark: #2c3987;
+  --ai-logic: #5ba55b;        /* Apple Green - true, false, compare */
+  --ai-logic-dark: #3f7e3f;
+  --ai-text: #b93f7c;         /* Magenta Rose - strings & join */
+  --ai-text-dark: #8c2a5a;
+  --ai-list: #3fa99b;         /* Teal - make a list, add items */
+  --ai-list-dark: #297a6f;
+  --ai-prop: #2e7d32;         /* Dark Forest Green - Label.Text */
+  --ai-prop-dark: #1b5e20;
+  --ai-call: #6a1b9a;         /* Deep Purple - call Sound.Play */
+  --ai-call-dark: #4a148c;
+
+  /* Surfaces & Canvas (Light Theme) */
+  --bg-app: #f8fafc;
+  --bg-surface: #ffffff;
+  --bg-surface-glass: rgba(255, 255, 255, 0.85);
+  --bg-card: #ffffff;
+  --bg-canvas: #f1f5f9;
+  --bg-grid-dot: #cbd5e1;
+
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --text-subtle: #94a3b8;
+  --text-on-accent: #ffffff;
+
+  --border-color: #e2e8f0;
+  --border-focus: #7c3aed;
+
+  /* Spacing Grid (4px system) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+
+  /* Border Radii */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-pill: 9999px;
+
+  /* Elevations & Shadows */
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
+  --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.08);
+  --shadow-lg: 0 10px 25px rgba(15, 23, 42, 0.12);
+  --shadow-glow-purple: 0 0 15px rgba(124, 58, 237, 0.4);
+  --shadow-glow-green: 0 0 15px rgba(16, 185, 129, 0.4);
+
+  /* Typography */
+  --font-stack: 'LINE Seed Sans TH', 'Prompt', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* Safe Area Insets (iOS Safari / Dynamic Island / Android Notch) */
+  --sat: env(safe-area-inset-top, 0px);
+  --sab: env(safe-area-inset-bottom, 0px);
+  --sal: env(safe-area-inset-left, 0px);
+  --sar: env(safe-area-inset-right, 0px);
+}
+
+/* Dark Theme Overrides */
+[data-theme="dark"] {
+  --bg-app: #090d16;
+  --bg-surface: #131b2e;
+  --bg-surface-glass: rgba(19, 27, 46, 0.88);
+  --bg-card: #182238;
+  --bg-canvas: #0c1220;
+  --bg-grid-dot: #25334d;
+
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --text-subtle: #64748b;
+
+  --border-color: #26354f;
+  --border-focus: #a78bfa;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.55);
+
+  --color-success-bg: rgba(16, 185, 129, 0.15);
+  --color-danger-bg: rgba(239, 68, 68, 0.15);
+  --color-warning-bg: rgba(245, 158, 11, 0.15);
+  --color-info-bg: rgba(59, 130, 246, 0.15);
+}

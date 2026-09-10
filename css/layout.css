@@ -1,0 +1,563 @@
+/**
+ * ==============================================================================
+ * APPLICATION LAYOUT (css/layout.css)
+ * ==============================================================================
+ * โครงสร้างหน้าจอหลัก: Header, World Map, Gameplay Layout (3 แผง), Simulator
+ */
+
+.app-root {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  height: 100dvh;
+  max-height: 100dvh;
+  padding-top: var(--sat);
+  padding-bottom: var(--sab);
+  padding-left: var(--sal);
+  padding-right: var(--sar);
+  overflow: hidden;
+}
+
+/* ==============================================================================
+ * HEADER NAVIGATION BAR
+ * ============================================================================== */
+.app-header {
+  height: 56px;
+  min-height: 56px;
+  flex-shrink: 0;
+  background: var(--bg-surface-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-4);
+  z-index: 50;
+  gap: var(--space-2);
+}
+
+.brand-section {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  cursor: pointer;
+}
+
+.brand-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(135deg, #7c3aed, #06b6d4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  box-shadow: var(--shadow-sm);
+  flex-shrink: 0;
+}
+
+.brand-titles {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-main);
+  letter-spacing: -0.3px;
+  white-space: nowrap;
+}
+
+.brand-sub {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+/* Header Quick Stats */
+.header-stats {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.stat-chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  background: var(--bg-app);
+  border: 1px solid var(--border-color);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.stat-chip.streak {
+  color: #ea580c;
+  background: rgba(234, 88, 12, 0.08);
+  border-color: rgba(234, 88, 12, 0.2);
+}
+
+.stat-chip.score {
+  color: var(--color-primary);
+  background: var(--color-primary-subtle);
+  border-color: rgba(124, 58, 237, 0.25);
+}
+
+.stat-chip.timer {
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.icon-btn {
+  width: 38px;
+  height: 38px;
+  min-width: 38px;
+  border-radius: var(--radius-pill);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  transition: all 0.15s ease;
+}
+
+.icon-btn:hover {
+  background: var(--color-primary-subtle);
+  color: var(--color-primary);
+  border-color: var(--color-primary-light);
+}
+
+/* ==============================================================================
+ * MISSION BANNER (แถบภารกิจด้านบน)
+ * ============================================================================== */
+.mission-strip {
+  flex-shrink: 0;
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border-color);
+  padding: var(--space-2) var(--space-4);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  z-index: 40;
+}
+
+.mission-info {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-grow: 1;
+  overflow: hidden;
+}
+
+.level-badge {
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  color: white;
+  white-space: nowrap;
+}
+
+.mission-text {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-main);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mission-tools {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-shrink: 0;
+}
+
+.hint-trigger-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  background: var(--color-warning-bg);
+  color: #b45309;
+  border: 1px solid var(--color-warning-border);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.hint-trigger-btn:hover {
+  background: #fde68a;
+}
+
+/* ==============================================================================
+ * MOBILE SEGMENTED VIEW SWITCHER
+ * ============================================================================== */
+.mobile-view-tabs {
+  display: none; /* ซ่อนใน desktop */
+  flex-shrink: 0;
+  background: var(--bg-surface);
+  padding: 6px var(--space-3);
+  border-bottom: 1px solid var(--border-color);
+  gap: 6px;
+  z-index: 35;
+}
+
+.mobile-tab-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 10px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-app);
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  font-weight: 700;
+  border: 1px solid var(--border-color);
+  transition: all 0.15s ease;
+  min-height: 44px; /* Touch target */
+}
+
+.mobile-tab-btn.active {
+  background: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary);
+  box-shadow: 0 2px 8px rgba(124, 58, 237, 0.35);
+}
+
+/* ==============================================================================
+ * MAIN GAMEPLAY WORKSPACE (3-COLUMN DESKTOP / SWITCHED MOBILE)
+ * ============================================================================== */
+.main-workspace {
+  flex: 1 1 0;
+  min-height: 0;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 1. Left Column: Toolbox Palette */
+.toolbox-panel {
+  width: 280px;
+  min-width: 280px;
+  background: var(--bg-surface);
+  border-right: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  z-index: 20;
+}
+
+.panel-header {
+  padding: var(--space-3) var(--space-4);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.toolbox-blocks-container {
+  flex: 1;
+  padding: var(--space-3);
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  touch-action: pan-y;
+}
+
+/* 2. Middle Column: Canvas Workspace */
+.canvas-panel {
+  flex: 1;
+  position: relative;
+  background-color: var(--bg-canvas);
+  background-image: radial-gradient(var(--bg-grid-dot) 1.5px, transparent 1.5px);
+  background-size: 20px 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  touch-action: none;
+}
+
+.canvas-viewport {
+  flex: 1;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Magnetic snap ghost preview */
+.drag-ghost {
+  position: absolute;
+  border: 2px dashed var(--color-primary);
+  background: rgba(124, 58, 237, 0.15);
+  border-radius: var(--radius-sm);
+  pointer-events: none;
+  display: none;
+  z-index: 999;
+  transition: transform 0.05s ease;
+  box-shadow: 0 0 12px rgba(124, 58, 237, 0.4);
+}
+
+/* Trash Can Widget */
+.trash-widget {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-pill);
+  background: var(--bg-surface);
+  border: 2px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  color: var(--text-muted);
+  box-shadow: var(--shadow-md);
+  z-index: 30;
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  pointer-events: none;
+}
+
+.trash-widget.drag-over {
+  transform: scale(1.18);
+  border-color: var(--color-danger);
+  background: var(--color-danger-bg);
+  color: var(--color-danger);
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.4);
+}
+
+.trash-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  margin-top: -2px;
+}
+
+/* 3. Right Column: Phone Simulator */
+.simulator-panel {
+  width: 350px;
+  min-width: 350px;
+  background: var(--bg-surface);
+  border-left: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space-4);
+  overflow-y: auto;
+  z-index: 20;
+}
+
+/* Authentic Phone Device Bezel */
+.phone-bezel {
+  width: 290px;
+  height: 520px;
+  background: #0f172a;
+  border-radius: 36px;
+  padding: 12px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35), inset 0 0 0 2px #334155;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin: auto 0;
+}
+
+.phone-notch {
+  width: 90px;
+  height: 18px;
+  background: #0f172a;
+  border-radius: 0 0 12px 12px;
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+
+.phone-screen {
+  flex: 1;
+  background: #f8fafc;
+  border-radius: 26px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+[data-theme="dark"] .phone-screen {
+  background: #090d16;
+}
+
+.phone-status-bar {
+  height: 24px;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #64748b;
+  margin-top: 4px;
+}
+
+.phone-app-bar {
+  background: #673ab7;
+  color: white;
+  padding: 8px 12px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.phone-app-content {
+  flex: 1;
+  padding: 14px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.phone-home-indicator {
+  width: 120px;
+  height: 4px;
+  border-radius: 9999px;
+  background: rgba(0, 0, 0, 0.25);
+  margin: 6px auto 4px auto;
+  flex-shrink: 0;
+}
+
+[data-theme="dark"] .phone-home-indicator {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* ==============================================================================
+ * STICKY BOTTOM ACTION BAR (สำหรับตรวจคำตอบและควบคุมด่าน)
+ * ============================================================================== */
+.action-bar {
+  height: 60px;
+  min-height: 60px;
+  flex-shrink: 0;
+  background: var(--bg-surface-glass);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-4);
+  z-index: 50;
+  gap: var(--space-3);
+}
+
+.action-bar-left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-width: 0;
+  overflow: hidden;
+}
+
+.btn-check-answer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+  font-size: 0.95rem;
+  font-weight: 800;
+  padding: 10px 24px;
+  border-radius: var(--radius-pill);
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4);
+  transition: all 0.15s ease;
+  min-height: 44px;
+}
+
+.btn-check-answer:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(16, 185, 129, 0.5);
+}
+
+.btn-check-answer:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.btn-check-answer:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Feedback Banner ลอยเตือนคำแนะนำ */
+.formative-banner {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-20px);
+  padding: 8px 18px;
+  border-radius: var(--radius-pill);
+  font-size: 0.85rem;
+  font-weight: 600;
+  box-shadow: var(--shadow-md);
+  z-index: 99;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  white-space: nowrap;
+  max-width: 90%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.formative-banner.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.formative-banner.success {
+  background: var(--color-success);
+  color: white;
+}
+
+.formative-banner.error {
+  background: var(--color-danger);
+  color: white;
+}
+
+.formative-banner.info {
+  background: var(--color-info);
+  color: white;
+}
