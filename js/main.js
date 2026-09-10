@@ -356,6 +356,18 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('btn-hint-toggle')?.addEventListener('click', () => UIController.openHintModal());
   document.getElementById('btn-close-hint')?.addEventListener('click', () => UIController.closeHintModal());
 
+  document.getElementById('btn-mission-toggle')?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    UIController.toggleMissionCard();
+  });
+
+  document.getElementById('mission-desc-card')?.addEventListener('click', () => {
+    const card = document.getElementById('mission-desc-card');
+    if (card && card.classList.contains('is-collapsed')) {
+      UIController.toggleMissionCard();
+    }
+  });
+
   document.getElementById('btn-reset-level')?.addEventListener('click', () => {
     AudioEngine.playClick();
     loadLevel(GameState.currentLevel, false);

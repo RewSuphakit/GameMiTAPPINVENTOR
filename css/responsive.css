@@ -78,37 +78,47 @@
     transform: scale(0.92);
   }
 
-  /* 2. Mission Strip Banner */
+  /* 2. Mission Strip & Eye-Comfort Question Card on Mobile */
   .mission-strip {
-    padding: 6px 12px;
+    padding: 6px 10px 8px 10px;
     flex-shrink: 0;
-    min-height: 42px;
+    min-height: auto;
     background: var(--bg-surface);
     border-bottom: 1px solid var(--border-color);
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 8px;
+    flex-direction: column;
+    gap: 5px;
   }
 
+  .mission-top-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+    width: 100%;
+  }
+
+  .mission-badge-group,
   .mission-info {
     display: flex;
     align-items: center;
     gap: 6px;
     min-width: 0;
+    flex: 1;
   }
 
   .level-badge {
-    font-size: 0.72rem;
+    font-size: 0.7rem;
     font-weight: 800;
-    padding: 2px 8px;
+    padding: 2px 7px;
     border-radius: 9999px;
     flex-shrink: 0;
     box-shadow: 0 1px 4px rgba(124, 58, 237, 0.3);
   }
 
+  .mission-title,
   .mission-text {
-    font-size: 0.82rem;
+    font-size: 0.8rem;
     font-weight: 700;
     color: var(--text-main);
     white-space: nowrap;
@@ -119,20 +129,20 @@
   .mission-tools {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 5px;
     flex-shrink: 0;
   }
 
   .hint-trigger-btn {
-    padding: 4px 10px;
+    padding: 3px 8px;
     border-radius: 9999px;
-    font-size: 0.76rem;
+    font-size: 0.72rem;
     font-weight: 800;
     background: #fef3c7;
     color: #92400e;
     border: 1.5px solid #fde68a;
-    box-shadow: 0 2px 6px rgba(245, 158, 11, 0.2);
-    min-height: 32px;
+    box-shadow: 0 1px 4px rgba(245, 158, 11, 0.15);
+    min-height: 28px;
   }
 
   [data-theme="dark"] .hint-trigger-btn {
@@ -143,6 +153,35 @@
 
   .hint-trigger-btn:active {
     transform: scale(0.95);
+  }
+
+  .mission-card {
+    padding: 6px 8px 6px 10px;
+    border-radius: 8px;
+    gap: 6px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  }
+
+  .mission-card-content {
+    max-height: 72px; /* พอดีตา 2-3 บรรทัดบนมือถือ ไม่บดบัง canvas */
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .mission-desc {
+    font-size: 0.78rem;
+    line-height: 1.48;
+  }
+
+  .mission-desc code {
+    padding: 1px 4px;
+    font-size: 0.84em;
+    border-radius: 4px;
+  }
+
+  .mission-toggle-btn {
+    padding: 2px 4px;
+    min-width: 24px;
+    min-height: 24px;
   }
 
   /* 3. Mobile Segmented View Switcher (iOS Segmented Control Feel) */

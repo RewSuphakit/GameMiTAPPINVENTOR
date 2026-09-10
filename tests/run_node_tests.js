@@ -57,5 +57,11 @@ test('Levels Schema: All 8 levels exist and have required properties', () => {
     assert.ok(lvl.variants && lvl.variants.length > 0, `Level ${i} should have variants`);
     assert.ok(lvl.hints && lvl.hints.length === 3, `Level ${i} should have 3 hint tiers`);
     assert.ok(lvl.validationType, `Level ${i} should have validationType`);
+
+    // ตรวจสอบว่าทุก Variant มีหัวข้อ title และคำอธิบายโจทย์ desc ครบถ้วน
+    lvl.variants.forEach((v, vIdx) => {
+      assert.ok(v.title && typeof v.title === 'string' && v.title.length > 0, `Level ${i} Variant ${vIdx} must have title`);
+      assert.ok(v.desc && typeof v.desc === 'string' && v.desc.length > 0, `Level ${i} Variant ${vIdx} must have mission description (desc)`);
+    });
   }
 });

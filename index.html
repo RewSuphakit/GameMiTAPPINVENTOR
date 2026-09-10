@@ -111,20 +111,30 @@
     </header>
 
     <!-- ======================================================================
-         2. MISSION STRIP BANNER (คำอธิบายโจทย์ประจำด่าน)
+         2. MISSION STRIP BANNER & QUESTION CARD (คำอธิบายโจทย์ประจำด่าน)
          ====================================================================== -->
-    <section class="mission-strip">
-      <div class="mission-info">
-        <span class="level-badge" id="mission-lvl-badge">LV.1 🧩</span>
-        <span class="mission-text" id="mission-title">กำลังโหลดภารกิจ...</span>
+    <section class="mission-strip" id="mission-strip">
+      <div class="mission-top-row">
+        <div class="mission-badge-group">
+          <span class="level-badge" id="mission-lvl-badge">LV.1 🧩</span>
+          <span class="mission-title mission-text" id="mission-title">กำลังโหลดภารกิจ...</span>
+        </div>
+        <div class="mission-tools">
+          <button class="hint-trigger-btn" id="btn-hint-toggle" title="ขอคำใบ้">
+            <span>💡</span>
+            <span>คำใบ้</span>
+          </button>
+          <button class="icon-btn" id="btn-reset-level" style="width:32px;height:32px;min-width:32px;" title="รีเซ็ตด่านนี้">
+            🔄
+          </button>
+        </div>
       </div>
-      <div class="mission-tools">
-        <button class="hint-trigger-btn" id="btn-hint-toggle" title="ขอคำใบ้">
-          <span>💡</span>
-          <span>คำใบ้</span>
-        </button>
-        <button class="icon-btn" id="btn-reset-level" style="width:32px;height:32px;min-width:32px;" title="รีเซ็ตด่านนี้">
-          🔄
+      <div class="mission-card" id="mission-desc-card" role="region" aria-label="คำอธิบายภารกิจ">
+        <div class="mission-card-content">
+          <div class="mission-desc" id="mission-desc-text">กำลังโหลดโจทย์...</div>
+        </div>
+        <button class="mission-toggle-btn" id="btn-mission-toggle" aria-label="ย่อหรือขยายโจทย์" title="ย่อหรือขยายโจทย์" aria-expanded="true">
+          <span class="toggle-icon">▲</span>
         </button>
       </div>
     </section>

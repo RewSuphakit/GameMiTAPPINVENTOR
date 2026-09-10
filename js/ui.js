@@ -113,6 +113,21 @@ export const UIController = {
   },
 
   /**
+   * ย่อ / ขยายการแสดงผลการ์ดโจทย์คำอธิบาย
+   */
+  toggleMissionCard() {
+    const card = document.getElementById('mission-desc-card');
+    const toggleBtn = document.getElementById('btn-mission-toggle');
+    if (!card) return;
+    const isCollapsed = card.classList.toggle('is-collapsed');
+    if (toggleBtn) {
+      const icon = toggleBtn.querySelector('.toggle-icon');
+      if (icon) icon.textContent = isCollapsed ? '▼' : '▲';
+      toggleBtn.setAttribute('aria-expanded', !isCollapsed);
+    }
+  },
+
+  /**
    * เรนเดอร์ด่านปัจจุบันลงบน Canvas, กล่อง Toolbox, และ Simulator
    */
   renderLevel(levelNum, variantIndex) {
@@ -127,6 +142,18 @@ export const UIController = {
     if (lvlBadge) lvlBadge.textContent = `LV.${levelNum} ${schema.modeIcon}`;
     if (missionTitle) missionTitle.textContent = variant.title;
     if (missionDesc) missionDesc.innerHTML = variant.desc;
+
+    // คืนค่าการ์ดโจทย์ให้เปิดอ่านได้ชัดเจน
+    const card = document.getElementById('mission-desc-card');
+    const toggleBtn = document.getElementById('btn-mission-toggle');
+    if (card && card.classList.contains('is-collapsed')) {
+      card.classList.remove('is-collapsed');
+      if (toggleBtn) {
+        const icon = toggleBtn.querySelector('.toggle-icon');
+        if (icon) icon.textContent = '▲';
+        toggleBtn.setAttribute('aria-expanded', 'true');
+      }
+    }
 
     // 2. เคลียร์ Formative Feedback เก่า
     this.setFormativeFeedback('', 'info');
